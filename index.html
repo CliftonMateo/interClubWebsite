@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Una cosa incredibile</title>
+	<style>
+		.hidden{
+			display:none;
+		}
+		.teo{
+			-webkit-animation: animazioneIncredibile 2s infinite;	
+		}
+
+		@-webkit-keyframes animazioneIncredibile {
+			0%	{ transform:rotate(0deg); }
+			100%	{ transform:rotate(720deg); }
+		}
+		@-moz-keyframes animazioneIncredibile {
+			0%	{ transform:rotate(0deg); }
+			100%	{ transform:rotate(720deg); }
+		}
+
+		@-o-keyframes animazioneIncredibile {
+			0%	{ transform:rotate(0deg); }
+			100%	{ transform:rotate(720deg); }
+		}
+		@keyframes animazioneIncredibile {
+			0%	{ transform:rotate(0deg); }
+			100%	{ transform:rotate(720deg); }
+		}
+	</style>
+</head>
+<body>
+<div id="Gruppo_1">
+	<h1>Forza?</h1>
+	<label><input class="Domanda_1" type="checkbox" id="1" data-giusto>Inter</label>
+	<label><input class="Domanda_1" type="checkbox" id="2">JuveMerda</label>
+	<label><input class="Domanda_1" type="checkbox" id="3">Bilan</label>
+</div>
+<div class="hidden" id="Gruppo_2">
+	<h1>Abbasso?</h1>
+	<label><input class="Domanda_2" type="checkbox" id="4">Inter</label>
+	<label><input class="Domanda_2" type="checkbox" id="5" data-giusto>JuveMerda</label>
+	<label><input class="Domanda_2" type="checkbox" id="6" data-giusto>Bilan</label>	
+</div>
+<div class="hidden teo" id="Vittoria">
+	<img src="http://www.jutarnji.hr/multimedia/archive/00551/mateo_kova_i__551710S1.jpg">
+</div>
+<button id="verifica">Verifica</button>
+<script>
+	var button = document.getElementById("verifica");
+	var iter   = 1;
+	var maxIter= 3;
+	button.addEventListener("click", function(){
+		var result = true;
+		if(iter<maxIter){
+			var giusti = document.querySelectorAll(".Domanda_"+iter+"[data-giusto]");
+			[].forEach.call(giusti, function(el, index) {
+				result = result && el.checked;
+			});
+			if(result){
+				alert("Bravo!");
+				iter+=1;
+				var gruppo = document.querySelector("#Gruppo_"+iter);
+				if(gruppo)
+					gruppo.classList.remove("hidden");
+			}else {
+				alert("Manco per il cazzo!");
+			}
+			if(iter===maxIter){
+				document.getElementById("Vittoria").classList.remove("hidden")
+			}
+		}
+	});
+</script>
+</body>
+</html>
