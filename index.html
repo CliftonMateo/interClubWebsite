@@ -4,6 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Una cosa incredibile</title>
 	<style>
+		.stripes {
+			height: 100%;
+			background: repeating-linear-gradient( 90deg, #000000, #000000 20px, #00106C 20px, #00106C 40px );
+			color: white;
+		}
 		.hidden{
 			display:none;
 		}
@@ -72,7 +77,8 @@
 				alert("Manco per il cazzo!");
 			}
 			if(iter===maxIter){
-				document.getElementById("Vittoria").classList.remove("hidden")
+				document.getElementById("Vittoria").classList.remove("hidden");
+				document.querySelector('html').classList.add('stripes');
 			}
 		}
 	});
